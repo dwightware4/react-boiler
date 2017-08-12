@@ -1,11 +1,11 @@
 {
-  "name": "React/Webpack Starter Kit",
+  "name": "project-boilerplate",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "start": "yarn run clean && yarn install && yarn run webpack-dev",
     "build": "yarn run clean && yarn install && yarn run webpack-prod",
-    "webpack-dev": "webpack --env.development --progress --hide-modules",
+    "webpack-dev": "webpack-dev-server --env.development --progress",
     "webpack-prod": "webpack --env.production --progress",
     "clean": "rm -rf dist",
     "clean-eslint": "rm -rf node_modules/.cache/eslint-loader"
@@ -26,6 +26,7 @@
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-env": "1.6.0",
     "babel-preset-react": "6.24.1",
+    "babel-preset-react-hmre": "1.1.1",
     "css-loader": "0.28.4",
     "eslint": "4.4.1",
     "eslint-loader": "1.9.0",
@@ -34,7 +35,8 @@
     "node-sass": "4.5.3",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
-    "webpack": "3.5.4"
+    "webpack": "3.5.4",
+    "webpack-dev-server": "2.7.1"
   },
   "repository": {
     "type": "git",

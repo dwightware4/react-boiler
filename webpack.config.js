@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StatLoggerPlugin = require('./system/webpack-plugins/stat-logger');
 const path = require('path');
@@ -7,7 +8,14 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 
 module.exports = env => {
   return {
-    watch: env.development,
+    devServer: {
+      port: 8080,
+      clientLogLevel: 'error',
+      noInfo: true,
+      overlay: true,
+      hot: true,
+      open: true,
+    },
 
     entry: `${SRC_PATH}/Root.jsx`,
 
@@ -39,7 +47,7 @@ module.exports = env => {
           include: SRC_PATH,
           test: /\.jsx?$/,
           options: {
-            presets: ['env', 'react'],
+            presets: ['env', 'react', 'react-hmre'],
             plugins: ['transform-class-properties', 'transform-object-rest-spread'],
           },
         },
@@ -51,6 +59,8 @@ module.exports = env => {
     },
 
     plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+
       new HtmlWebpackPlugin({
         template: 'src/index.template.html',
       }),
